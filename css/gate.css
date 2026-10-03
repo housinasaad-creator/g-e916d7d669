@@ -1,0 +1,37 @@
+/* شاشة كلمة السر: تغطي الصفحة حتى يتم فك تشفير المحتوى */
+#gate {
+  position: fixed; inset: 0; z-index: 200; display: grid; place-items: center; padding: 20px;
+  background: radial-gradient(circle at 50% 30%, #2a2a3a 0%, #101018 55%, #050507 100%);
+  color: #fff; font-family: 'Tajawal', system-ui, -apple-system, 'Segoe UI', sans-serif; transition: opacity .7s ease, visibility .7s;
+}
+#gate.gone { opacity: 0; visibility: hidden; pointer-events: none; }
+#gate::before, #gate::after {
+  content: ""; position: absolute; width: 3px; height: 3px; border-radius: 50%; background: #fff; top: 0; left: 0;
+  box-shadow: 12vw 18vh #fff, 80vw 12vh #c4f5ff, 30vw 70vh #ffd9cc, 66vw 82vh #fff, 90vw 55vh #fff, 8vw 90vh #c4f5ff, 52vw 8vh #fff, 22vw 40vh #ffd9cc;
+  animation: gtw 3.6s ease-in-out infinite;
+}
+#gate::after { box-shadow: 40vw 22vh #fff, 74vw 36vh #ffd9cc, 14vw 62vh #fff, 58vw 60vh #c4f5ff, 92vw 90vh #fff, 34vw 92vh #fff; animation-delay: 1.8s; }
+.gate-card {
+  position: relative; width: min(100%, 380px); padding: 34px 26px 30px; text-align: center; border-radius: 30px;
+  background: rgba(18,18,26,.62); border: 1px solid rgba(255,255,255,.2); box-shadow: 0 24px 60px rgba(6,2,28,.55);
+}
+.gate-lock { font-size: 3.2rem; line-height: 1; margin-bottom: 8px; animation: gfloat 3.4s ease-in-out infinite; }
+.gate-card h1 { margin: 0 0 4px; font-size: 1.7rem; line-height: 1.5; font-weight: 800; }
+.gate-card p { margin: 0 0 20px; color: rgba(255,255,255,.7); font-size: .95rem; }
+#gateForm { display: grid; gap: 12px; }
+#gatePw {
+  width: 100%; padding: 15px 18px; font: 700 1.2rem inherit; letter-spacing: .2em; text-align: center; color: #fff; outline: none;
+  border-radius: 16px; border: 1.5px solid rgba(255,255,255,.28); background: rgba(6,6,10,.55);
+}
+#gatePw:focus { border-color: #6fe3ff; box-shadow: 0 0 0 4px rgba(111,227,255,.2); }
+#gateBtn {
+  padding: 14px; border: 0; border-radius: 16px; cursor: pointer; font: 800 1.1rem inherit; color: #0b0420;
+  background: linear-gradient(90deg, #6fe3ff, #ffc2ad); transition: transform .15s;
+}
+#gateBtn:active { transform: scale(.97); }
+#gateBtn:disabled { opacity: .6; }
+#gateMsg { min-height: 1.6em; margin-top: 12px; font-size: .95rem; color: #ffb3c7; }
+#gate.shake .gate-card { animation: gshake .45s; }
+@keyframes gshake { 20% { transform: translateX(-10px); } 40% { transform: translateX(10px); } 60% { transform: translateX(-6px); } 80% { transform: translateX(6px); } }
+@keyframes gfloat { 50% { transform: translateY(-6px); } }
+@keyframes gtw { 50% { opacity: .25; } }
